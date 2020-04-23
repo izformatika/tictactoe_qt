@@ -7,10 +7,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->resize(350,450);
+
     reset=new QPushButton(this);
     reset->setText("Restart");
     reset->resize(150,50);
     reset->move(50,50);
+    connect(reset,SIGNAL(clicked()),this,SLOT(clear()));
+
     buttons=new QButtonGroup(this);
     for (int i=0; i<9; i++)
     {
@@ -27,3 +30,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::clear()
+{
+    for (int i=0; i<9; i++)
+    {
+        buttons->button(i)->setText("");
+    }
+}
