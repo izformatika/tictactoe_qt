@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QButtonGroup>
+#include <QString>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,5 +26,6 @@ private:
     QPushButton * reset;
     QButtonGroup * buttons;
     int player=0;
+    QString wins();
 };
 #endif // MAINWINDOW_H

@@ -34,9 +34,27 @@ void MainWindow::move(int i)
         if (player==0) {buttons->button(i)->setText("X");player=1;}
         else {buttons->button(i)->setText("O");player=0;}
     }
-    QMessageBox msgBox;
-    msgBox.setText("next move");
-    msgBox.exec();
+    QString w=wins();
+    if (w!="no")
+    {
+        QMessageBox msgBox;
+        msgBox.setText(w+" wins");
+        msgBox.exec();
+        clear();
+    }
+}
+
+QString MainWindow::wins()
+{
+    for (int i=0; i<3; i++)
+    {
+        if (buttons->button(i*3)->text()==buttons->button(i*3+1)->text()
+                and buttons->button(i*3)->text()==buttons->button(i*3+2)->text()
+                and buttons->button(i*3)->text()!="")
+                    return buttons->button(i*3)->text();
+    }
+
+    return "no";
 }
 
 MainWindow::~MainWindow()
