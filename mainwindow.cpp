@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->resize(350,450);
+    this->setFixedSize(350,450);
 
     reset=new QPushButton(this);
     reset->setText("Restart");
@@ -32,6 +32,11 @@ MainWindow::MainWindow(QWidget *parent)
     l->resize(50,50);
     l->move(250,50);
 
+    QPixmap bkgnd("1.png");
+    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Background, bkgnd);
+    this->setPalette(palette);
 }
 
 void MainWindow::move(int i)
