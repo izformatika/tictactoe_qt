@@ -24,5 +24,6 @@ private:
     Ui::MainWindow *ui;
     QPushButton * reset;
     QButtonGroup * buttons;
+    int player=0;
 };
 #endif // MAINWINDOW_H

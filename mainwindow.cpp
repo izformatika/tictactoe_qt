@@ -30,7 +30,8 @@ void MainWindow::move(int i)
 {
     if (buttons->button(i)->text()=="")
     {
-        buttons->button(i)->setText("X");
+        if (player==0) {buttons->button(i)->setText("X");player=1;}
+        else {buttons->button(i)->setText("O");player=0;}
     }
 }
 
