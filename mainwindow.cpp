@@ -46,4 +46,5 @@ void MainWindow::clear()
     {
         buttons->button(i)->setText("");
     }
+    player=0;
 }
