@@ -25,6 +25,13 @@ MainWindow::MainWindow(QWidget *parent)
         buttons->addButton(btn,i);
     }
     connect(buttons,SIGNAL(buttonClicked(int)),this,SLOT(move(int)));
+
+    l=new QLabel(this);
+    l->setText("0:0");
+    l->setAlignment(Qt::AlignCenter);
+    l->resize(50,50);
+    l->move(250,50);
+
 }
 
 void MainWindow::move(int i)
@@ -41,6 +48,9 @@ void MainWindow::move(int i)
         msgBox.setText(w+" wins");
         msgBox.exec();
         clear();
+        if (w=="X") x_pts++;
+        else o_pts++;
+        l->setText(QString::number(x_pts)+":"+QString::number(o_pts));
     }
 }
 
@@ -60,6 +70,8 @@ QString MainWindow::wins()
                 and buttons->button(i)->text()!="")
                     return buttons->button(i)->text();
     }
+    if (buttons->button(0)->text()==buttons->button(4)->text() and buttons->button(4)->text()==buttons->button(8)->text() and buttons->button(0)->text()!="") return buttons->button(0)->text();
+    if (buttons->button(2)->text()==buttons->button(4)->text() and buttons->button(4)->text()==buttons->button(6)->text() and buttons->button(2)->text()!="") return buttons->button(2)->text();
     return "no";
 }
 
