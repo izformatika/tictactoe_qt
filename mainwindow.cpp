@@ -18,10 +18,19 @@ MainWindow::MainWindow(QWidget *parent)
     for (int i=0; i<9; i++)
     {
         QPushButton * btn=new QPushButton(this);
-        btn->setText(QString::number(i));
+        btn->setText("");
         btn->resize(50,50);
         btn->move(50+(i%3)*100,150+(i/3)*100);
         buttons->addButton(btn,i);
+    }
+    connect(buttons,SIGNAL(buttonClicked(int)),this,SLOT(move(int)));
+}
+
+void MainWindow::move(int i)
+{
+    if (buttons->button(i)->text()=="")
+    {
+        buttons->button(i)->setText("X");
     }
 }
 
