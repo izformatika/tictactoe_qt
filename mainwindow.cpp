@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,6 +34,9 @@ void MainWindow::move(int i)
         if (player==0) {buttons->button(i)->setText("X");player=1;}
         else {buttons->button(i)->setText("O");player=0;}
     }
+    QMessageBox msgBox;
+    msgBox.setText("next move");
+    msgBox.exec();
 }
 
 MainWindow::~MainWindow()
