@@ -53,7 +53,13 @@ QString MainWindow::wins()
                 and buttons->button(i*3)->text()!="")
                     return buttons->button(i*3)->text();
     }
-
+    for (int i=0; i<3; i++)
+    {
+        if (buttons->button(i)->text()==buttons->button(i+3)->text()
+                and buttons->button(i+3)->text()==buttons->button(i+6)->text()
+                and buttons->button(i)->text()!="")
+                    return buttons->button(i)->text();
+    }
     return "no";
 }
 
